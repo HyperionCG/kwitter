@@ -10,9 +10,9 @@ class RegisterForm extends React.Component {
     "password": ""
   }
 
-  handleLogin = e => {
+  handleRegister = e => {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.register(this.state);
   };
 
   handleChange = e => {
@@ -23,7 +23,7 @@ class RegisterForm extends React.Component {
     const { loading, error } = this.props;
     return (
       <React.Fragment>
-        <form id="login-form" onSubmit={this.handleLogin}>
+        <form id="login-form" onSubmit={this.handleRegister}>
           <label htmlFor="username">Username</label>
           <input
             type="text"
