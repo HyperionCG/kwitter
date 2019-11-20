@@ -24,6 +24,7 @@ export default function configureStore(preloadedState) {
 
   store.subscribe(() => {
     localStorage.setItem("login", JSON.stringify(store.getState().auth.login));
+    localStorage.setItem("register", JSON.stringify(store.getState().auth.register));
   });
 
   return store;
