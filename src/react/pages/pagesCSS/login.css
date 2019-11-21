@@ -1,0 +1,21 @@
+body {
+  background: #e6ecf0;
+}
+#login {
+  margin-top: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  width: 300px;
+  border-radius: 6px;
+  margin: 0 auto 0 auto;
+  padding: 20px 10px 10px 10px;
+  border: gainsboro 1px solid;
+}
+
+h2 {
+  font-size: 1.5em;
+  text-align: center;
+}
