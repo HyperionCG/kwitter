@@ -3,3 +3,31 @@
   flex-direction: column;
   max-width: 20em;
 }
+
+label {
+  margin: 5px;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.login-button {
+  background: lightskyblue;
+  color: black;
+  border-radius: 5px;
+  border: gray 1px solid;
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 10px;
+  font-size: medium;
+}
+
+button:hover {
+  background-color: yellow;
+}
+
+button:focus {
+  background-color: gray;
+}
