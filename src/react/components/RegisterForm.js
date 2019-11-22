@@ -1,14 +1,14 @@
 import React from "react";
 import { Spinner } from ".";
 import { withAsyncAction } from "../HOCs";
-
+import "./register.css";
 
 class RegisterForm extends React.Component {
-  state =  {
-    "username": "",
-    "displayName": "",
-    "password": ""
-  }
+  state = {
+    username: "",
+    displayName: "",
+    password: ""
+  };
 
   handleRegister = e => {
     e.preventDefault();
