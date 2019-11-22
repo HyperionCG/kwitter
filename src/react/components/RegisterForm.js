@@ -1,14 +1,18 @@
 import React from "react";
 import { Spinner } from ".";
 import { withAsyncAction } from "../HOCs";
-import "./LoginForm.css";
 
-class LoginForm extends React.Component {
-  state = { username: "", password: "" };
 
-  handleLogin = e => {
+class RegisterForm extends React.Component {
+  state =  {
+    "username": "",
+    "displayName": "",
+    "password": ""
+  }
+
+  handleRegister = e => {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.register(this.state);
   };
 
   handleChange = e => {
@@ -19,7 +23,7 @@ class LoginForm extends React.Component {
     const { loading, error } = this.props;
     return (
       <React.Fragment>
-        <form id="login-form" onSubmit={this.handleLogin}>
+        <form id="login-form" onSubmit={this.handleRegister}>
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -35,8 +39,16 @@ class LoginForm extends React.Component {
             required
             onChange={this.handleChange}
           />
-          <button class="login-button" type="submit" disabled={loading}>
-            Login
+          <label htmlFor="displayName">displayName</label>
+          <input
+            type="text"
+            name="displayName"
+            autoFocus
+            required
+            onChange={this.handleChange}
+          />
+          <button type="submit" disabled={loading}>
+            Register
           </button>
         </form>
         {loading && <Spinner name="circle" color="blue" />}
@@ -46,4 +58,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default withAsyncAction("auth", "login")(LoginForm);
+export default withAsyncAction("auth", "register")(RegisterForm);
