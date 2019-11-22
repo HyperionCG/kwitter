@@ -50,6 +50,7 @@ class UserInput extends React.Component {
 
   handleCreateMessage = event => {
     if (event.key === "Enter" && this.state.value !== "") {
+      event.preventDefault();
       const newMessages = this.state.messages.slice();
       newMessages.push({
         message: {
@@ -60,6 +61,8 @@ class UserInput extends React.Component {
           likes: []
         }
       });
+
+      console.log("message created");
 
       this.setState({ messages: newMessages, value: "" });
     }
@@ -81,14 +84,9 @@ class UserInput extends React.Component {
             variant="outlined"
             onKeyDown={this.handleCreateMessage}
             onChange={this.handleChange}
+            value={this.state.value}
           />
-          <Button
-            onClick={this.handleCreateMessage}
-            onChange={this.handleChange}
-            className={useStyles.button}
-          >
-            Default
-          </Button>
+          <Button className={useStyles.button}>Default</Button>
         </div>
       </form>
     );
