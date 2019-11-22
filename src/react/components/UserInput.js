@@ -63,6 +63,7 @@ class UserInput extends React.Component {
       });
 
       console.log("message created");
+      console.log(newMessages);
 
       this.setState({ messages: newMessages, value: "" });
     }
