@@ -1,6 +1,6 @@
 import React from "react";
-// import MessageCard from "./MessageCard";
 import { withAsyncAction } from "../HOCs";
+import MessageCard from "./MessageCard";
 
 class MessageList extends React.Component {
   componentDidMount() {
@@ -12,12 +12,11 @@ class MessageList extends React.Component {
       this.props.result &&
       this.props.result.messages.map(message => {
         return (
-          <p>MessageCard goes here</p>
-          // <MessageCard
-          //   username={message.username}
-          //   text={message.text}
-          //   createdAt={message.createdAt}
-          // />
+          <MessageCard
+            username={message.username}
+            text={message.text}
+            createdAt={message.createdAt}
+          />
         );
       })
     );

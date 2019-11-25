@@ -1,13 +1,5 @@
 import React from "react";
 
-// const fakeMessage = {
-//   id: 938,
-//   text: "This is my second message!",
-//   username: "testuser",
-//   createdAt: "2019-11-18T16:07:42.936Z",
-//   likes: []
-// };
-
 class MessageCard extends React.Component {
   render() {
     return (

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Menu,
-  UserCard,
-  UserInput,
-  MessageList,
-  MessageCard
-} from "../components";
+import { Menu, UserCard, UserInput, MessageList } from "../components";
 import { userIsAuthenticated } from "../HOCs";
 import Grid from "@material-ui/core/Grid";
 
@@ -19,17 +13,8 @@ class Profile extends React.Component {
           <UserCard />
           <Grid>
             <UserInput />
-            {/* MessageList goes here */}
-            <MessageCard
-              username="username1"
-              text="text of message 1"
-              createdAt="2019-11-18T16:07:42.936Z"
-            />
-            <MessageCard
-              username="username2"
-              text="text of message 2"
-              createdAt="2019-11-18T16:07:42.936Z"
-            />
+            <MessageList username={this.props.match.params.username} />
+            /> */}
           </Grid>
         </Grid>
       </>
