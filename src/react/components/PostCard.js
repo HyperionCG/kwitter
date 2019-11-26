@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 275,
+    minWidth: 500,
   },
   bullet: {
     display: 'inline-block',
@@ -33,8 +33,7 @@ export default function SimpleCard() {
           Bob Ross
         </Typography>
         <Typography variant="h5" component="h2">
-          Title
-          Content
+          Time Stamp
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
             Text Content
@@ -46,7 +45,7 @@ export default function SimpleCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Like</Button>
+        <Button variant= "contained" size="small">Like</Button>
       </CardActions>
     </Card>
   );

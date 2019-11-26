@@ -9,13 +9,13 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(3),
   },
  
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 200,
+    marginLeft: theme.spacing(4),
+    marginRight: theme.spacing(2),
+    width: 500,
   },
 }));
 
@@ -28,11 +28,11 @@ export default function UserInput() {
         <TextField
           id="outlined-basic"
           className={classes.textField}
-          label="Outlined"
+          label="What's on your mind?"
           margin="normal"
           variant="outlined"
         />
-          <Button className={classes.button}>Default</Button>
+          <Button variant= "contained" className={classes.button}>Post</Button>
       </div>
     </form>
   );
