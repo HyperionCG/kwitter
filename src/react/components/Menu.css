@@ -12,6 +12,12 @@
   padding-left: 1em;
 }
 
+#menu-links .selected {
+  text-decoration: none;
+  color: black;
+  cursor: auto;
+}
+
 #menu-links a {
   padding-right: 0.5em;
   color: darkblue;
