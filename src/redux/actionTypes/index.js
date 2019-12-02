@@ -7,7 +7,13 @@ const createActionTypes = actionName => {
   };
 };
 
+//auth
 export const LOGIN = createActionTypes("LOGIN");
 export const LOGOUT = createActionTypes("LOGOUT");
+
+//users
+export const GETUSER = createActionTypes("GETUSER");
 export const REGISTER = createActionTypes("REGISTER");
+
+//messages
 export const GETMESSAGES = createActionTypes("GETMESSAGES");
