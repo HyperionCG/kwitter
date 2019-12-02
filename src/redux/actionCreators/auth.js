@@ -1,8 +1,7 @@
 import { domain, jsonHeaders, handleJsonResponse } from "./constants";
-import { LOGIN, LOGOUT, REGISTER } from "../actionTypes";
+import { LOGIN, LOGOUT } from "../actionTypes";
 
-
-const url = domain ;
+const url = domain;
 
 export const login = loginData => dispatch => {
   dispatch({
@@ -51,25 +50,24 @@ export const logout = () => (dispatch, getState) => {
     });
 };
 
+// export const register = registerData => dispatch => {
+//   dispatch({
+//     type: REGISTER.START
+//   });
 
-export const register = registerData => dispatch => {
-  dispatch({
-    type: REGISTER.START
-  });
-
-  return fetch(url + "/users", {
-    method: "POST",
-    headers: jsonHeaders,
-    body: JSON.stringify(registerData)
-  })
-    .then(handleJsonResponse)
-    .then(result => {
-      return dispatch({
-        type: REGISTER.SUCCESS,
-        payload: result
-      });
-    })
-    .catch(err => {
-      return Promise.reject(dispatch({ type: REGISTER.FAIL, payload: err }));
-    });
-};
+//   return fetch(url + "/users", {
+//     method: "POST",
+//     headers: jsonHeaders,
+//     body: JSON.stringify(registerData)
+//   })
+//     .then(handleJsonResponse)
+//     .then(result => {
+//       return dispatch({
+//         type: REGISTER.SUCCESS,
+//         payload: result
+//       });
+//     })
+//     .catch(err => {
+//       return Promise.reject(dispatch({ type: REGISTER.FAIL, payload: err }));
+//     });
+// };
