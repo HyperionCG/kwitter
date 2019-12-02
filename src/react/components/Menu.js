@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from ".";
+import { Link, NavLink } from ".";
 import "./Menu.css";
-import { withAsyncAction } from "../HOCs";
+import { withAsyncAction, connect } from "../HOCs";
 
 class Menu extends React.Component {
   handleLogout = event => {
@@ -15,7 +15,15 @@ class Menu extends React.Component {
         <h1>Kwitter</h1>
         {this.props.isAuthenticated && (
           <div id="menu-links">
-            <Link to="/newsfeed">Newsfeed</Link>
+            <NavLink
+              activeClassName="selected"
+              to={`/profile/${this.props.username}`}
+            >
+              Your Profile
+            </NavLink>
+            <NavLink activeClassName="selected" to="/Newsfeed">
+              Newsfeed
+            </NavLink>
             <Link to="/" onClick={this.handleLogout}>
               Logout
             </Link>
@@ -26,4 +34,12 @@ class Menu extends React.Component {
   }
 }
 
-export default withAsyncAction("auth", "logout")(Menu);
+const mapStateToProps = state => {
+  return {
+    username: state.auth.login.result && state.auth.login.result.username
+  };
+};
+
+export default connect(mapStateToProps)(
+  withAsyncAction("auth", "logout")(Menu)
+);
