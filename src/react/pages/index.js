@@ -1,6 +1,6 @@
 import Home from "./Home";
 import Profile from "./Profile";
-import Newsfeed from "./Profile";
+import Newsfeed from "./Newsfeed";
 import NotFound from "./NotFound";
 import RegisterPage from "./RegisterPage";
 
