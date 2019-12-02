@@ -11,3 +11,4 @@ export const LOGIN = createActionTypes("LOGIN");
 export const LOGOUT = createActionTypes("LOGOUT");
 export const REGISTER = createActionTypes("REGISTER");
 export const GETMESSAGES = createActionTypes("GETMESSAGES");
+export const POSTMESSAGE = createActionTypes("POSTMESSAGE");
