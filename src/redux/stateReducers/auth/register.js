@@ -36,5 +36,5 @@ const register = (
       return state;
   }
 };
-
+// test
 export default withAsyncReducer(REGISTER, register);
