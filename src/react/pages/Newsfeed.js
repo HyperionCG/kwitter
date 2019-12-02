@@ -9,7 +9,7 @@ class Newsfeed extends React.Component {
         <Menu isAuthenticated={this.props.isAuthenticated} />
         <h2>Newsfeed</h2>
         {/* <CreateMessageForm /> */}
-        (UserInput form goes here)
+        UserInput form goes here
         <MessageList />
       </>
     );

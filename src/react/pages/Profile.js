@@ -14,7 +14,6 @@ class Profile extends React.Component {
           <Grid>
             <UserInput />
             <MessageList username={this.props.match.params.username} />
-            /> */}
           </Grid>
         </Grid>
       </>
