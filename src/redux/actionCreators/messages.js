@@ -54,8 +54,7 @@ export const _postMessage = postMessageBody => (dispatch, getState) => {
 export const postMessage = postMessageBody => (dispatch, getState) => {
   return dispatch(_postMessage(postMessageBody)).then(() =>
     dispatch(getMessages()).then(() => {
-      const username = getState().auth.login.result.username;
-      return dispatch(push(`/profile/${username}`));
+      return dispatch(push(`/newsfeed`));
     })
   );
 };
