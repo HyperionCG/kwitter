@@ -67,10 +67,11 @@ class UserInput extends React.Component {
   handlePost = event => {
     event.preventDefault();
     this.props.postMessage(this.state);
+    this.setState({ text: "" });
   };
 
   handleChange = event => {
-    //this.setState({ value: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
@@ -88,9 +89,13 @@ class UserInput extends React.Component {
             label="Outlined"
             margin="normal"
             variant="outlined"
-            // onKeyDown={this.handleCreateMessage}
+            input
+            type="text"
+            name="text"
+            autoFocus
+            required
+            value={this.state.text}
             onChange={this.handleChange}
-            // value={this.state.value}
           />
           <button type="submit">Submit Message</button>
         </div>
@@ -99,4 +104,4 @@ class UserInput extends React.Component {
   }
 }
 
-export default /* withAsyncAction("messages", "postMessage")(*/ UserInput;
+export default withAsyncAction("messages", "postMessage")(UserInput);

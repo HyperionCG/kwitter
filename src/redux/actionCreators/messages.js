@@ -1,5 +1,6 @@
 import { domain, jsonHeaders, handleJsonResponse } from "./constants";
 import { GETMESSAGES, POSTMESSAGE } from "../actionTypes";
+import { push } from "connected-react-router";
 
 const url = domain + "/messages";
 
@@ -26,14 +27,16 @@ export const getMessages = username => dispatch => {
     });
 };
 
-export const postMessage = postMessageBody => dispatch => {
+export const _postMessage = postMessageBody => (dispatch, getState) => {
   dispatch({
     type: POSTMESSAGE.START
   });
 
+  const token = getState().auth.login.result.token;
+
   return fetch(url, {
     method: "POST",
-    headers: jsonHeaders,
+    headers: { Authorization: "Bearer " + token, ...jsonHeaders },
     body: JSON.stringify(postMessageBody)
   })
     .then(handleJsonResponse)
@@ -46,4 +49,13 @@ export const postMessage = postMessageBody => dispatch => {
     .catch(err => {
       return Promise.reject(dispatch({ type: POSTMESSAGE.FAIL, payload: err }));
     });
+};
+
+export const postMessage = postMessageBody => (dispatch, getState) => {
+  return dispatch(_postMessage(postMessageBody)).then(() =>
+    dispatch(getMessages()).then(() => {
+      const username = getState().auth.login.result.username;
+      return dispatch(push(`/profile/${username}`));
+    })
+  );
 };
