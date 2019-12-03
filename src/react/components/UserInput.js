@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { withAsyncAction } from "../HOCs";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -39,43 +39,49 @@ const useStyles = makeStyles(theme => ({
 // }
 
 class UserInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      messages: [],
-      userID: "testuser1",
-      value: ""
-    };
-  }
+  state = {
+    text: ""
+  };
 
-  handleCreateMessage = event => {
-    if (event.key === "Enter" && this.state.value !== "") {
-      event.preventDefault();
-      const newMessages = this.state.messages.slice();
-      newMessages.push({
-        message: {
-          id: Math.floor(Math.random() * 10000000),
-          text: this.state.value,
-          username: "testuser1",
-          createdAt: "2019-11-22T04:51:34.273Z",
-          likes: []
-        }
-      });
+  // handleCreateMessage = event => {
+  //   if (event.key === "Enter" && this.state.value !== "") {
+  //     event.preventDefault();
+  //     const newMessages = this.state.messages.slice();
+  //     newMessages.push({
+  //       message: {
+  //         id: Math.floor(Math.random() * 10000000),
+  //         text: this.state.value,
+  //         username: "testuser1",
+  //         createdAt: "2019-11-22T04:51:34.273Z",
+  //         likes: []
+  //       }
+  //     });
 
-      console.log("message created");
-      console.log(newMessages);
+  //     console.log("message created");
+  //     console.log(newMessages);
 
-      this.setState({ messages: newMessages, value: "" });
-    }
+  //     this.setState({ messages: newMessages, value: "" });
+  //   }
+  // };
+
+  handlePost = event => {
+    event.preventDefault();
+    this.props.postMessage(this.state);
+    this.setState({ text: "" });
   };
 
   handleChange = event => {
-    this.setState({ value: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
     return (
-      <form className={useStyles.container} noValidate autoComplete="off">
+      <form
+        className={useStyles.container}
+        noValidate
+        autoComplete="off"
+        onSubmit={this.handlePost}
+      >
         <div>
           <TextField
             id="outlined-basic"
@@ -83,15 +89,19 @@ class UserInput extends React.Component {
             label="Outlined"
             margin="normal"
             variant="outlined"
-            onKeyDown={this.handleCreateMessage}
+            input
+            type="text"
+            name="text"
+            autoFocus
+            required
+            value={this.state.text}
             onChange={this.handleChange}
-            value={this.state.value}
           />
-          <Button className={useStyles.button}>Default</Button>
+          <button type="submit">Submit Message</button>
         </div>
       </form>
     );
   }
 }
 
-export default UserInput;
+export default withAsyncAction("messages", "postMessage")(UserInput);

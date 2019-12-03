@@ -17,3 +17,4 @@ export const REGISTER = createActionTypes("REGISTER");
 
 //messages
 export const GETMESSAGES = createActionTypes("GETMESSAGES");
+export const POSTMESSAGE = createActionTypes("POSTMESSAGE");
