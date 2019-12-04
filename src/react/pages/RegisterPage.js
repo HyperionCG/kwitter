@@ -1,5 +1,5 @@
 import React from "react";
-import { RegisterForm, Menu } from "../components";
+import { RegisterForm, Menu, Link } from "../components";
 import { userIsNotAuthenticated } from "../HOCs";
 
 class RegisterPage extends React.Component {
@@ -9,6 +9,9 @@ class RegisterPage extends React.Component {
         <Menu />
         <h2>Register Here</h2>
         <RegisterForm />
+        <h4>
+          <Link to="/">Go Back</Link>
+        </h4>
       </>
     );
   }
