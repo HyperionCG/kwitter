@@ -34,6 +34,7 @@ class UserCard extends React.Component {
     return (
       <div
         style={{
+          background: "white",
           border: "1px solid black",
           borderRadius: "10px",
           padding: "1em",

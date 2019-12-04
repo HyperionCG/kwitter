@@ -5,6 +5,7 @@ class MessageCard extends React.Component {
     return (
       <div
         style={{
+          background: "white",
           border: "1px solid black",
           padding: "1em",
           borderRadius: "10px",
