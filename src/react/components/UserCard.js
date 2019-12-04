@@ -44,9 +44,10 @@ class UserCard extends React.Component {
         <img
           style={{ maxWidth: "20em" }}
           src={
-            user.pictureLocation
-              ? "https://kwitter-api.herokuapp.com" + user.pictureLocation
-              : "http://simpleicon.com/wp-content/uploads/user1.svg"
+            // user.pictureLocation
+            "https://icecreamconvos.com/wp-content/uploads/2017/03/Screen-Shot-2017-03-17-at-10.35.26-AM-700x590.png"
+              // ? "https://kwitter-api.herokuapp.com" + user.pictureLocation
+              // : "http://simpleicon.com/wp-content/uploads/user1.svg"
           }
         />
         <h3>{user.displayName}</h3>
@@ -55,7 +56,7 @@ class UserCard extends React.Component {
         {user.about ? (
           <p>{user.about}</p>
         ) : (
-          <p style={{ color: "grey" }}>You do not have about details yet</p>
+          <p style={{ color: "grey" }}>This is your bio information.</p>
         )}
 
         <p>Created: {new Date(user.createdAt).toDateString()}</p>
