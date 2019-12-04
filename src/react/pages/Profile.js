@@ -1,7 +1,7 @@
 import React from "react";
-import { Menu, UserCard, UserInput, MessageList } from "../components";
+import { Menu, UserCard, MessageList, UserInput } from "../components";
 import { userIsAuthenticated } from "../HOCs";
-import Grid from "@material-ui/core/Grid";
+
 
 class Profile extends React.Component {
   render() {
@@ -9,13 +9,14 @@ class Profile extends React.Component {
       <>
         <Menu isAuthenticated={this.props.isAuthenticated} />
         <h2>Profile</h2>
-        <Grid container spacing={2}>
-          <UserCard />
-          <Grid>
+        <div style={{ display: "flex" }}>
+          <UserCard username={this.props.match.params.username} />
+          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+            <h3>Your messages</h3>
             <UserInput />
             <MessageList username={this.props.match.params.username} />
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </>
     );
   }
