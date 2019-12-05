@@ -1,4 +1,5 @@
 import React from "react";
+import { DeleteMessage } from ".";
 
 class MessageCard extends React.Component {
   render() {
@@ -12,21 +13,14 @@ class MessageCard extends React.Component {
           margin: "2em"
         }}
       >
-        {this.props.userOwn && (
-          <button
-            style={{
-              width: "5%",
-              fontSize: "10px",
-              background: "red"
-            }}
-          >
-            Delete
-          </button>
-        )}
         <h4>{this.props.username}</h4>
         <p>{this.props.text}</p>
         <p>{new Date(this.props.createdAt).toDateString()}</p>
         <p>{new Date(this.props.createdAt).toTimeString()}</p>
+        <DeleteMessage
+          username={this.props.username}
+          messageId={this.props.id}
+        />
       </div>
     );
   }
