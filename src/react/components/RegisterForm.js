@@ -1,14 +1,14 @@
 import React from "react";
 import { Spinner } from ".";
 import { withAsyncAction } from "../HOCs";
-
+import "./RegisterForm.css";
 
 class RegisterForm extends React.Component {
-  state =  {
-    "username": "",
-    "displayName": "",
-    "password": ""
-  }
+  state = {
+    username: "",
+    displayName: "",
+    password: ""
+  };
 
   handleRegister = e => {
     e.preventDefault();
@@ -39,11 +39,10 @@ class RegisterForm extends React.Component {
             required
             onChange={this.handleChange}
           />
-          <label htmlFor="displayName">displayName</label>
+          <label htmlFor="displayName">Display Name</label>
           <input
             type="text"
             name="displayName"
-            autoFocus
             required
             onChange={this.handleChange}
           />
@@ -58,4 +57,4 @@ class RegisterForm extends React.Component {
   }
 }
 
-export default withAsyncAction("auth", "register")(RegisterForm);
+export default withAsyncAction("users", "register")(RegisterForm);

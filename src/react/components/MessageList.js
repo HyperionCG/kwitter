@@ -1,6 +1,6 @@
 import React from "react";
-import MessageCard from "./MessageCard";
 import { withAsyncAction } from "../HOCs";
+import MessageCard from "./MessageCard";
 
 class MessageList extends React.Component {
   componentDidMount() {
@@ -13,6 +13,7 @@ class MessageList extends React.Component {
       this.props.result.messages.map(message => {
         return (
           <MessageCard
+            key={message.id}
             username={message.username}
             text={message.text}
             createdAt={message.createdAt}

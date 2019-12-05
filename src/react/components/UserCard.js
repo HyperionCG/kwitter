@@ -1,51 +1,80 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { withAsyncAction } from "../HOCs";
+import { Spinner } from ".";
 
-const useStyles = makeStyles({
-  card: {  
-    maxWidth: 250,
-  },
-});
+// const fakeUser = {
+//   pictureLocation: null, // URI to download the picture
+//   username: "testuser",
+//   displayName: "Taylor Hurt",
+//   about: "",
+//   googleId: null,
+//   createdAt: "2019-11-18T15:10:16.100Z",
+//   updatedAt: "2019-11-18T15:10:16.100Z"
+// };
 
-export default function UserCard() {
-  const classes = useStyles();
+class UserCard extends React.Component {
+  componentDidMount() {
+    this.props.getUser(this.props.username);
+  }
 
-  return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.username !== prevProps.username) {
+      this.props.getUser(this.props.username);
+    }
+  }
+
+  render() {
+    if (this.props.result === null) {
+      return <Spinner name="circle" color="blue" />;
+    }
+
+    const user = this.props.result.user;
+
+    return (
+      <div
+        style={{
+          background: "white",
+          border: "1px solid black",
+          borderRadius: "10px",
+          padding: "1em",
+          margin: "2em",
+          maxWidth: "20em"
+        }}
+      >
+        <img
+          style={{ maxWidth: "20em" }}
+          src={
+            // user.pictureLocation
+            "https://icecreamconvos.com/wp-content/uploads/2017/03/Screen-Shot-2017-03-17-at-10.35.26-AM-700x590.png"
+              // ? "https://kwitter-api.herokuapp.com" + user.pictureLocation
+              // : "http://simpleicon.com/wp-content/uploads/user1.svg"
+          }
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
-  );
+        <h3>{user.displayName}</h3>
+        <p>{user.username}</p>
+
+        {user.about ? (
+          <p>{user.about}</p>
+        ) : (
+          <p style={{ color: "grey" }}>This is your bio information.</p>
+        )}
+
+        <p>Created: {new Date(user.createdAt).toDateString()}</p>
+        <p>Last Updated: {new Date(user.updatedAt).toDateString()}</p>
+        
+      </div>
+    );
+  }
 }
 
+/*
+mapStateToProps
+  loading
+  error
+  result
+
+mapDispatchToProps
+  getUser
+*/
+export default withAsyncAction("users", "getUser")(UserCard);
