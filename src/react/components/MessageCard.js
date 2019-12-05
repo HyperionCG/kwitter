@@ -5,11 +5,11 @@ class MessageCard extends React.Component {
     return (
       <div
         style={{
+          background: "white",
           border: "1px solid black",
           padding: "1em",
           borderRadius: "10px",
-          margin: "2em",
-          background: "white"
+          margin: "2em"
         }}
       >
         {this.props.userOwn && (

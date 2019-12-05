@@ -15,7 +15,8 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200
+    width: 200,
+    background: "white"
   }
 }));
 
@@ -86,7 +87,7 @@ class UserInput extends React.Component {
           <TextField
             id="outlined-basic"
             className={useStyles.textField}
-            label="Outlined"
+            label="Type Here"
             margin="normal"
             variant="outlined"
             input
