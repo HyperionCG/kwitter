@@ -43,6 +43,7 @@ class UserCard extends React.Component {
         }}
       >
         <img
+          alt="user"
           style={{ maxWidth: "20em" }}
           src={
             // user.pictureLocation
