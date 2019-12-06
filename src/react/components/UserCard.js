@@ -51,7 +51,6 @@ class UserCard extends React.Component {
             // ? "https://kwitter-api.herokuapp.com" + user.pictureLocation
             // : "http://simpleicon.com/wp-content/uploads/user1.svg"
           }
-          alt={"a thing"}
         />
         <h3>{user.displayName}</h3>
         <p>{user.username}</p>
