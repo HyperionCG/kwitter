@@ -86,7 +86,7 @@ class UserInput extends React.Component {
           <TextField
             id="outlined-basic"
             className={useStyles.textField}
-            label="Outlined"
+            label="Type Here"
             margin="normal"
             variant="outlined"
             input

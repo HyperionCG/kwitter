@@ -8,7 +8,9 @@ class Home extends React.Component {
     return (
       <>
         <Menu />
-        <h2>Your favorite microblogging platform</h2>
+        <h2 style={{ 
+          color: "white",   
+        }}>Your favorite microblogging platform</h2>
         <div id="login">
           <LoginForm />
           <p>
