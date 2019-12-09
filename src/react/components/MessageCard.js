@@ -1,5 +1,5 @@
 import React from "react";
-import { DeleteMessage, Link } from ".";
+import { DeleteMessage, Link, ToggleLikeButton } from ".";
 
 class MessageCard extends React.Component {
   render() {
@@ -19,6 +19,8 @@ class MessageCard extends React.Component {
         <p>{this.props.text}</p>
         <p>{new Date(this.props.createdAt).toDateString()}</p>
         <p>{new Date(this.props.createdAt).toTimeString()}</p>
+        <p>{this.props.likes.length} Likes</p>
+        <ToggleLikeButton messageId={this.props.id} likes={this.props.likes} />
         <DeleteMessage
           username={this.props.username}
           messageId={this.props.id}
