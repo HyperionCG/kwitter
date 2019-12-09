@@ -7,6 +7,7 @@ export { default as UserInput } from "./UserInput";
 export { default as MessageList } from "./MessageList";
 export { default as MessageCard } from "./MessageCard";
 export { default as DeleteMessage } from "./DeleteMessage";
+export { default as UploadProfileImg } from "./UploadProfileImg";
 // components from other packages
 export { Switch, Route, Link, NavLink } from "react-router-dom";
 export { default as Spinner } from "react-spinkit";

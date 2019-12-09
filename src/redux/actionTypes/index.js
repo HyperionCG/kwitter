@@ -14,6 +14,7 @@ export const LOGOUT = createActionTypes("LOGOUT");
 //users
 export const GETUSER = createActionTypes("GETUSER");
 export const REGISTER = createActionTypes("REGISTER");
+export const UPLOADPROFILEIMG = createActionTypes("UPLOADPROFILEIMG");
 
 //messages
 export const GETMESSAGES = createActionTypes("GETMESSAGES");

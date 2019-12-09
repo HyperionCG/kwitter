@@ -1,6 +1,7 @@
 import React from "react";
 import { withAsyncAction } from "../HOCs";
 import { Spinner } from ".";
+import { UploadProfileImg } from ".";
 
 // const fakeUser = {
 //   pictureLocation: null, // URI to download the picture
@@ -46,8 +47,9 @@ class UserCard extends React.Component {
           alt="user"
           style={{ maxWidth: "20em" }}
           src={
-            // user.pictureLocation
-            "https://icecreamconvos.com/wp-content/uploads/2017/03/Screen-Shot-2017-03-17-at-10.35.26-AM-700x590.png"
+            user.pictureLocation
+              ? "https://kwitter-api.herokuapp.com" + user.pictureLocation
+              : "https://icecreamconvos.com/wp-content/uploads/2017/03/Screen-Shot-2017-03-17-at-10.35.26-AM-700x590.png"
             // ? "https://kwitter-api.herokuapp.com" + user.pictureLocation
             // : "http://simpleicon.com/wp-content/uploads/user1.svg"
           }
@@ -63,6 +65,7 @@ class UserCard extends React.Component {
 
         <p>Created: {new Date(user.createdAt).toDateString()}</p>
         <p>Last Updated: {new Date(user.updatedAt).toDateString()}</p>
+        <UploadProfileImg username={this.props.username} />
       </div>
     );
   }
