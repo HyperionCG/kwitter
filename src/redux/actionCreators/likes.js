@@ -43,7 +43,7 @@ export const addLike = messageId => (dispatch, getState) => {
   return dispatch(_addLike(messageId)).then(() => {
     const username = getState().auth.login.result.username;
     const pathname = getState().router.location.pathname;
-    if (pathname === "/messagefeed") {
+    if (pathname === "/Newsfeed") {
       return dispatch(getMessages());
     }
     return dispatch(getMessages(username));
@@ -77,7 +77,7 @@ export const removeLike = likeId => (dispatch, getState) => {
   return dispatch(_removeLike(likeId)).then(() => {
     const username = getState().auth.login.result.username;
     const pathname = getState().router.location.pathname;
-    if (pathname === "/messagefeed") {
+    if (pathname === "/Newsfeed") {
       return dispatch(getMessages());
     }
     return dispatch(getMessages(username));
