@@ -2,30 +2,67 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { withAsyncAction } from "../HOCs";
-import "./userInput.css";
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
-    flexWrap: "wrap",
-    alignItems: "center"
-  }
-  // button: {
-  //   margin: theme.spacing(1)
-  // }
+    flexWrap: "wrap"
+  },
+  button: {
+    margin: theme.spacing(1)
+  },
 
-  // textField: {
-  //   marginLeft: theme.spacing(1),
-  //   marginRight: theme.spacing(1),
-  //   width: 500,
-  //   background: "white"
-  // }
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200
+  }
 }));
+
+// export default function UserInput() {
+//   const classes = useStyles();
+
+//   return (
+//     <form className={classes.container} noValidate autoComplete="off">
+//       <div>
+//         <TextField
+//           id="outlined-basic"
+//           className={classes.textField}
+//           label="Outlined"
+//           margin="normal"
+//           variant="outlined"
+//         />
+//           <Button className={classes.button}>Default</Button>
+//       </div>
+//     </form>
+//   );
+// }
 
 class UserInput extends React.Component {
   state = {
     text: ""
   };
+
+  // handleCreateMessage = event => {
+  //   if (event.key === "Enter" && this.state.value !== "") {
+  //     event.preventDefault();
+  //     const newMessages = this.state.messages.slice();
+  //     newMessages.push({
+  //       message: {
+  //         id: Math.floor(Math.random() * 10000000),
+  //         text: this.state.value,
+  //         username: "testuser1",
+  //         createdAt: "2019-11-22T04:51:34.273Z",
+  //         likes: []
+  //       }
+  //     });
+
+  //     console.log("message created");
+  //     console.log(newMessages);
+
+  //     this.setState({ messages: newMessages, value: "" });
+  //   }
+  // };
 
   handlePost = event => {
     event.preventDefault();
@@ -45,10 +82,10 @@ class UserInput extends React.Component {
         autoComplete="off"
         onSubmit={this.handlePost}
       >
-        <div className="userInputDiv">
+        <div>
           <TextField
             id="outlined-basic"
-            className="userInputBox"
+            className={useStyles.textField}
             label="Type Here"
             margin="normal"
             variant="outlined"
@@ -60,9 +97,7 @@ class UserInput extends React.Component {
             value={this.state.text}
             onChange={this.handleChange}
           />
-          <button className="submitButton" type="submit">
-            Submit
-          </button>
+          <button type="submit">Submit Message</button>
         </div>
       </form>
     );
