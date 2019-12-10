@@ -1,5 +1,5 @@
 import { domain, jsonHeaders, handleJsonResponse } from "./constants";
-import { GETMESSAGES, POSTMESSAGE } from "../actionTypes";
+import { GETMESSAGES, POSTMESSAGE, DELETEMESSAGE } from "../actionTypes";
 import { push } from "connected-react-router";
 
 const url = domain + "/messages";
@@ -51,10 +51,45 @@ export const _postMessage = postMessageBody => (dispatch, getState) => {
     });
 };
 
+export const _deleteMessage = messageId => (dispatch, getState) => {
+  dispatch({ type: DELETEMESSAGE.START });
+
+  const token = getState().auth.login.result.token;
+
+  return fetch(url + "/" + messageId, {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token, ...jsonHeaders }
+  })
+    .then(handleJsonResponse)
+    .then(result => {
+      return dispatch({
+        type: DELETEMESSAGE.SUCCESS,
+        payload: result
+      });
+    })
+    .catch(err => {
+      return Promise.reject(
+        dispatch({ type: DELETEMESSAGE.FAIL, payload: err })
+      );
+    });
+};
+
 export const postMessage = postMessageBody => (dispatch, getState) => {
   return dispatch(_postMessage(postMessageBody)).then(() =>
     dispatch(getMessages()).then(() => {
       return dispatch(push(`/newsfeed`));
     })
   );
+};
+
+export const deleteMessage = messageId => (dispatch, getState) => {
+  return dispatch(_deleteMessage(messageId)).then(() => {
+    const username = getState().auth.login.result.username;
+
+    const pathname = getState().router.location.pathname;
+    if (pathname === "/newsfeed") {
+      return dispatch(getMessages());
+    }
+    return dispatch(getMessages(username));
+  });
 };

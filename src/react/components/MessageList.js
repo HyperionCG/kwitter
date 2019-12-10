@@ -7,6 +7,12 @@ class MessageList extends React.Component {
     this.props.getMessages(this.props.username);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.username !== prevProps.username) {
+      this.props.getMessages(this.props.username);
+    }
+  }
+
   render() {
     return (
       this.props.result &&
@@ -17,6 +23,8 @@ class MessageList extends React.Component {
             username={message.username}
             text={message.text}
             createdAt={message.createdAt}
+            id={message.id}
+            likes={message.likes}
           />
         );
       })
