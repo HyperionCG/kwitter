@@ -1,5 +1,4 @@
 import React from "react";
-import { DeleteMessage, Link, ToggleLikeButton } from ".";
 
 class MessageCard extends React.Component {
   render() {
@@ -13,18 +12,10 @@ class MessageCard extends React.Component {
           margin: "2em"
         }}
       >
-        <Link to={`/profile/${this.props.username}`}>
-          <h4>{this.props.username}</h4>
-        </Link>{" "}
+        <h4>{this.props.username}</h4>
         <p>{this.props.text}</p>
         <p>{new Date(this.props.createdAt).toDateString()}</p>
         <p>{new Date(this.props.createdAt).toTimeString()}</p>
-        <p>{this.props.likes.length} Likes</p>
-        <ToggleLikeButton messageId={this.props.id} likes={this.props.likes} />
-        <DeleteMessage
-          username={this.props.username}
-          messageId={this.props.id}
-        />
       </div>
     );
   }
