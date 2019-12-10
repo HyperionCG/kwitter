@@ -11,7 +11,6 @@ import { Spinner, DeleteUserButton } from ".";
 //   createdAt: "2019-11-18T15:10:16.100Z",
 //   updatedAt: "2019-11-18T15:10:16.100Z"
 // };
-import { Spinner } from ".";
 import { UploadProfileImg } from ".";
 
 class UserCard extends React.Component {
@@ -63,11 +62,8 @@ class UserCard extends React.Component {
 
         <p>Created: {new Date(user.createdAt).toDateString()}</p>
         <p>Last Updated: {new Date(user.updatedAt).toDateString()}</p>
-<<<<<<< HEAD
         <DeleteUserButton username={this.props.username} />
-=======
         <UploadProfileImg username={this.props.username} />
->>>>>>> profileImg
       </div>
     );
   }
