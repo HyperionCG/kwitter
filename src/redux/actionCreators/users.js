@@ -1,5 +1,5 @@
 import { domain, jsonHeaders, handleJsonResponse } from "./constants";
-import { GETUSER, REGISTER, DELETEUSER } from "../actionTypes";
+import { GETUSER, REGISTER, DELETEUSER, UPLOADPROFILEIMG} from "../actionTypes";
 import { login } from "./auth";
 
 const url = domain + "/users";
@@ -38,6 +38,30 @@ const _register = registerData => dispatch => {
     })
     .catch(err => {
       return Promise.reject(dispatch({ type: REGISTER.FAIL, payload: err }));
+    });
+};
+
+export const uploadProfileImg = formData => (dispatch, getState) => {
+  dispatch({ type: UPLOADPROFILEIMG.START });
+
+  const { username, token } = getState().auth.login.result;
+
+  return fetch(url + "/" + username + "/picture", {
+    method: "PUT",
+    headers: { Authorization: "Bearer " + token, Accept: "application/json" },
+    body: formData
+  })
+    .then(handleJsonResponse)
+    .then(result => {
+      return dispatch({
+        type: UPLOADPROFILEIMG.SUCCESS,
+        payload: result
+      });
+    })
+    .catch(err => {
+      return Promise.reject(
+        dispatch({ type: UPLOADPROFILEIMG.FAIL, payload: err })
+      );
     });
 };
 

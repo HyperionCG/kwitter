@@ -7,6 +7,7 @@ export { default as UserInput } from "./UserInput";
 export { default as MessageList } from "./MessageList";
 export { default as MessageCard } from "./MessageCard";
 export { default as DeleteMessage } from "./DeleteMessage";
+export { default as UploadProfileImg } from "./UploadProfileImg";
 export { default as ToggleLikeButton } from "./ToggleLikeButton";
 export { default as DeleteUserButton } from "./DeleteUserButton";
 // components from other packages

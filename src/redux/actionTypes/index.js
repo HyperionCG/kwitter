@@ -15,6 +15,7 @@ export const LOGOUT = createActionTypes("LOGOUT");
 export const GETUSER = createActionTypes("GETUSER");
 export const REGISTER = createActionTypes("REGISTER");
 export const DELETEUSER = createActionTypes("DELETEUSER");
+export const UPLOADPROFILEIMG = createActionTypes("UPLOADPROFILEIMG");
 
 //messages
 export const GETMESSAGES = createActionTypes("GETMESSAGES");
