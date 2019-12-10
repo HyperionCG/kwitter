@@ -1,5 +1,5 @@
 import { domain, jsonHeaders, handleJsonResponse } from "./constants";
-import { GETUSER, REGISTER } from "../actionTypes";
+import { GETUSER, REGISTER, DELETEUSER } from "../actionTypes";
 import { login } from "./auth";
 
 const url = domain + "/users";
@@ -51,3 +51,24 @@ export const register = registerData => dispatch => {
     )
   );
 };
+
+export const deleteUser = () => (dispatch, getState) => {
+  dispatch({ type: DELETEUSER.START });
+
+  const { username, token } = getState().auth.login.result;
+
+  return fetch(url + "/" + username, {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token, ...jsonHeaders }
+  })
+  .then(handleJsonResponse)
+    .then(result => {
+      return dispatch({
+        type: DELETEUSER.SUCCESS,
+        payload: result
+      });
+    })
+    .catch(err => {
+      return Promise.reject(dispatch({ type: DELETEUSER.FAIL, payload: err }));
+    });
+  };
