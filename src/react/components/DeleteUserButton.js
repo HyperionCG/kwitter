@@ -39,6 +39,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(
-//   withAsyncAction("users", "deleteUser")
+  withAsyncAction("users", "deleteUser")
   (DeleteUserButton)
 );
