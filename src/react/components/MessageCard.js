@@ -13,6 +13,10 @@ class MessageCard extends React.Component {
           margin: "2em"
         }}
       >
+        <img
+          alt="user"
+          src={`https://kwitter-api.herokuapp.com/users/${this.props.username}/picture`}
+        />
         <Link to={`/profile/${this.props.username}`}>
           <h4>{this.props.username}</h4>
         </Link>{" "}
