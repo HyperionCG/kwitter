@@ -1,5 +1,11 @@
 import { domain, jsonHeaders, handleJsonResponse } from "./constants";
-import { GETUSER, REGISTER, DELETEUSER, UPLOADPROFILEIMG} from "../actionTypes";
+import {
+  GETUSER,
+  GETUSERS,
+  REGISTER,
+  DELETEUSER,
+  UPLOADPROFILEIMG
+} from "../actionTypes";
 import { login } from "./auth";
 
 const url = domain + "/users";
@@ -19,6 +25,24 @@ export const getUser = username => dispatch => {
     })
     .catch(err => {
       return Promise.reject(dispatch({ type: GETUSER.FAIL, payload: err }));
+    });
+};
+
+export const getUsers = () => dispatch => {
+  dispatch({ type: GETUSERS.START });
+  return fetch(`${url}?limit=100000`, {
+    method: "GET",
+    headers: jsonHeaders
+  })
+    .then(handleJsonResponse)
+    .then(result => {
+      return dispatch({
+        type: GETUSERS.SUCCESS,
+        payload: result
+      });
+    })
+    .catch(err => {
+      return Promise.reject(dispatch({ type: GETUSERS.FAIL, payload: err }));
     });
 };
 
@@ -85,7 +109,7 @@ export const deleteUser = () => (dispatch, getState) => {
     method: "DELETE",
     headers: { Authorization: "Bearer " + token, ...jsonHeaders }
   })
-  .then(handleJsonResponse)
+    .then(handleJsonResponse)
     .then(result => {
       return dispatch({
         type: DELETEUSER.SUCCESS,
@@ -95,4 +119,4 @@ export const deleteUser = () => (dispatch, getState) => {
     .catch(err => {
       return Promise.reject(dispatch({ type: DELETEUSER.FAIL, payload: err }));
     });
-  };
+};
