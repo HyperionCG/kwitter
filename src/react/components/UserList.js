@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from ".";
 import { withAsyncAction } from "../HOCs";
+import "./UserList.css";
 
 class UserList extends React.Component {
   state = {
@@ -38,9 +39,17 @@ class UserList extends React.Component {
         {this.props.result &&
           this.state.filteredUsers.map(user => {
             return (
-              <Link to={`/profile/${user.username}`}>
-                <p>{user.username}</p>
-              </Link>
+              <div className="user-result-box">
+                <img
+                  width="20"
+                  height="30"
+                  alt="."
+                  src={`https://kwitter-api.herokuapp.com/users/${user.username}/picture`}
+                />
+                <Link to={`/profile/${user.username}`}>
+                  <p>{user.username}</p>
+                </Link>
+              </div>
             );
           })}
         ;
