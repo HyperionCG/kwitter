@@ -1,5 +1,6 @@
 import React from "react";
 import { DeleteMessage, Link, ToggleLikeButton } from ".";
+import "./MessageCard.css";
 
 class MessageCard extends React.Component {
   render() {
@@ -14,6 +15,8 @@ class MessageCard extends React.Component {
         }}
       >
         <img
+          width="50"
+          height="60"
           alt="user"
           src={`https://kwitter-api.herokuapp.com/users/${this.props.username}/picture`}
         />
