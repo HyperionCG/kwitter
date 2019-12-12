@@ -13,43 +13,43 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
-
-const useStyles = makeStyles(theme => ({
+const styles = (theme) => {
+  return {
   root: {
     height: '100vh',
   },
-  image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  paper: {
-    margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
-const classes = useStyles();
+  // image: {
+  //   backgroundImage: 'url(https://source.unsplash.com/random)',
+  //   backgroundRepeat: 'no-repeat',
+  //   // backgroundColor:
+  //   //   theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
+  //   backgroundSize: 'cover',
+  //   backgroundPosition: 'center',
+  // },
+  // paper: {
+  //   margin: theme.spacing(8, 4),
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   alignItems: 'center',
+  // },
+  // avatar: {
+  //   margin: theme.spacing(1),
+  //   backgroundColor: theme.palette.secondary.main,
+  // },
+  // form: {
+  //   width: '100%', // Fix IE 11 issue.
+  //   marginTop: theme.spacing(1),
+  // },
+  // submit: {
+  //   margin: theme.spacing(3, 0, 2),
+  // },
+}
+};
 
 class LoginForm extends React.Component {
   state = { username: "", password: "" };
@@ -64,9 +64,10 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    const { loading, error } = this.props;
+    const { loading, error, classes } = this.props;
     return (
       <React.Fragment>
+        <Grid container component="main" className={styles("").root}>
         <form id="login-form" onSubmit={this.handleLogin}>
           <label htmlFor="username">Username</label>
           <input
@@ -89,6 +90,7 @@ class LoginForm extends React.Component {
         </form>
         {loading && <Spinner name="circle" color="blue" />}
         {error && <p style={{ color: "red" }}>{error.message}</p>}
+        </Grid>
       </React.Fragment>
     );
   }
