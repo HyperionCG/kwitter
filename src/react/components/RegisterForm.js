@@ -46,11 +46,7 @@ class RegisterForm extends React.Component {
             required
             onChange={this.handleChange}
           />
-          <button
-            className="registerPagebutton"
-            type="submit"
-            disabled={loading}
-          >
+          <button type="submit" disabled={loading}>
             Register
           </button>
         </form>

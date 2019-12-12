@@ -2,8 +2,8 @@ body {
   background: white;
 }
 
-.registerPagebutton {
-  background: white;
+button {
+  background: lightskyblue;
   color: black;
   border-radius: 5px;
   border: gray 1px solid;

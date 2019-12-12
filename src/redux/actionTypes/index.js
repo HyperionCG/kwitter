@@ -21,8 +21,3 @@ export const UPLOADPROFILEIMG = createActionTypes("UPLOADPROFILEIMG");
 //messages
 export const GETMESSAGES = createActionTypes("GETMESSAGES");
 export const POSTMESSAGE = createActionTypes("POSTMESSAGE");
-export const DELETEMESSAGE = createActionTypes("DELETEMESSAGE");
-
-//likes
-export const ADDLIKE = createActionTypes("ADDLIKE");
-export const REMOVELIKE = createActionTypes("REMOVELIKE");
