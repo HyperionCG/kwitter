@@ -47,7 +47,8 @@ class UserCard extends React.Component {
           style={{ maxWidth: "20em" }}
           src={
             user.pictureLocation
-              ? "https://kwitter-api.herokuapp.com" + user.pictureLocation
+              ? "https://kwitter-api-benjmm.herokuapp.com" +
+                user.pictureLocation
               : "https://icecreamconvos.com/wp-content/uploads/2017/03/Screen-Shot-2017-03-17-at-10.35.26-AM-700x590.png"
           }
         />
