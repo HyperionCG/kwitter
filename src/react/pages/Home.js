@@ -1,3 +1,4 @@
+
 import React from "react";
 import { LoginForm, Menu, Link } from "../components";
 import { userIsNotAuthenticated } from "../HOCs";
@@ -8,13 +9,12 @@ class Home extends React.Component {
     return (
       <>
         <Menu />
-        <h2 style={{ 
-          color: "white",   
+        <h2 style={{
+          color: "white",
         }}>Your favorite microblogging platform</h2>
         <div id="login">
           <LoginForm />
-          <p>
-            Don't have an account? <Link to="/register">Register Here</Link>
+          <p>Don't have an account?<Link to="/register"> Register here</Link>
           </p>
         </div>
       </>
