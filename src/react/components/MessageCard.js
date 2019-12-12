@@ -18,7 +18,7 @@ class MessageCard extends React.Component {
           width="50"
           height="60"
           alt="user"
-          src={`https://kwitter-api.herokuapp.com/users/${this.props.username}/picture`}
+          src={`https://kwitter-api-benjmm.herokuapp.com/users/${this.props.username}/picture`}
         />
         <Link to={`/profile/${this.props.username}`}>
           <h4>{this.props.username}</h4>

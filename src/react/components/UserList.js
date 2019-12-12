@@ -44,7 +44,7 @@ class UserList extends React.Component {
                   width="20"
                   height="30"
                   alt="."
-                  src={`https://kwitter-api.herokuapp.com/users/${user.username}/picture`}
+                  src={`https://kwitter-api-benjmm.herokuapp.com/users/${user.username}/picture`}
                 />
                 <Link to={`/profile/${user.username}`}>
                   <p>{user.username}</p>
