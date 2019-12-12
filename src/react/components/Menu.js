@@ -12,13 +12,9 @@ class Menu extends React.Component {
   render() {
     return (
       <div id="menu">
-        <h1
-          style={{
-            color: "white"
-          }}
-        >
-          Kwitter
-        </h1>
+        <h1 style={{ 
+          color: "white",
+        }}>Kwitter</h1>
         {this.props.isAuthenticated && (
           <div id="menu-links">
             <NavLink
@@ -26,9 +22,6 @@ class Menu extends React.Component {
               to={`/profile/${this.props.username}`}
             >
               Your Profile
-            </NavLink>
-            <NavLink activeClassName="selected" to="/UserSearch">
-              Search Users
             </NavLink>
             <NavLink activeClassName="selected" to="/Newsfeed">
               Newsfeed
