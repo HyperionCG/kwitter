@@ -1,4 +1,6 @@
 import React from "react";
+import { DeleteMessage, Link, ToggleLikeButton } from ".";
+import "./MessageCard.css";
 
 class MessageCard extends React.Component {
   render() {
@@ -12,7 +14,15 @@ class MessageCard extends React.Component {
           margin: "2em"
         }}
       >
-        <h4>{this.props.username}</h4>
+        <img
+          width="50"
+          height="60"
+          alt="user"
+          src={`https://kwitter-api-benjmm.herokuapp.com/users/${this.props.username}/picture`}
+        />
+        <Link to={`/profile/${this.props.username}`}>
+          <h4>{this.props.username}</h4>
+        </Link>{" "}
         <p>{this.props.text}</p>
         <p>{new Date(this.props.createdAt).toDateString()}</p>
         <p>{new Date(this.props.createdAt).toTimeString()}</p>
