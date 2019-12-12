@@ -3,7 +3,7 @@ export * from "./users";
 export * from "./messages";
 export * from "./likes";
 
-export const domain = "https://kwitter-api-benjmm.herokuapp.com";
+export const domain = "https://kwitter-api.herokuapp.com";
 //export const domain = "http://localhost:3000";
 
 export const jsonHeaders = {
