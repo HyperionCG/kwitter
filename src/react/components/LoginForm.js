@@ -1,7 +1,7 @@
 import React from "react";
 import { Spinner } from ".";
 import { withAsyncAction } from "../HOCs";
-import "./LoginForm.css";
+// import "./LoginForm.css";
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -20,34 +20,22 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = (theme) => {
   return {
-  root: {
-    height: '100vh',
+  
+  paper: {
+    margin: '250 px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
-  // image: {
-  //   backgroundImage: 'url(https://source.unsplash.com/random)',
-  //   backgroundRepeat: 'no-repeat',
-  //   // backgroundColor:
-  //   //   theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
-  //   backgroundSize: 'cover',
-  //   backgroundPosition: 'center',
-  // },
-  // paper: {
-  //   margin: theme.spacing(8, 4),
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   alignItems: 'center',
-  // },
-  // avatar: {
-  //   margin: theme.spacing(1),
-  //   backgroundColor: theme.palette.secondary.main,
-  // },
-  // form: {
-  //   width: '100%', // Fix IE 11 issue.
-  //   marginTop: theme.spacing(1),
-  // },
-  // submit: {
-  //   margin: theme.spacing(3, 0, 2),
-  // },
+  
+  form: {
+    // height: "100 px",
+    width: '100%', // Fix IE 11 issue.
+    // marginTop: theme.spacing(1),
+  },
+  submit: {
+    // margin: theme.spacing(3, 0, 2),
+  },
 }
 };
 
@@ -66,32 +54,55 @@ class LoginForm extends React.Component {
   render() {
     const { loading, error, classes } = this.props;
     return (
-      <React.Fragment>
-        <Grid container component="main" className={styles("").root}>
-        <form id="login-form" onSubmit={this.handleLogin}>
-          <label htmlFor="username">Username</label>
-          <input
+      
+        <div>
+           <CssBaseline />
+           {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
+      
+      <div className={styles.paper}>
+      
+
+        <form className={styles.form} onSubmit={this.handleLogin}>
+          {/* <label htmlFor="username">Username</label> */}
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
             type="text"
             name="username"
+            id="username"
             autoFocus
             required
             onChange={this.handleChange}
           />
           <label htmlFor="password">Password</label>
-          <input
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            label="password"
             type="password"
             name="password"
+            id="password"
             required
             onChange={this.handleChange}
           />
-          <button className="login-button" type="submit" disabled={loading}>
+          <Button 
+          className={styles.submit} 
+          type="submit" 
+          disabled={loading}
+          fullWidth
+          variant="contained"
+          color="primary"
+          >
             Login
-          </button>
+          </Button>
         </form>
         {loading && <Spinner name="circle" color="blue" />}
         {error && <p style={{ color: "red" }}>{error.message}</p>}
-        </Grid>
-      </React.Fragment>
+        </div>
+        </div>
+      
     );
   }
 }

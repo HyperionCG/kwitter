@@ -2,13 +2,13 @@ body {
   background: #a1c4e9 ;
 }
 #login {
-  margin-top: 10px;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   background: white;
-  width: 300px;
+  width: 500px;
+  height: 500px;
   border-radius: 6px;
   margin: 0 auto 0 auto;
   padding: 20px 10px 10px 10px;

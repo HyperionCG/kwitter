@@ -11,10 +11,12 @@ class Home extends React.Component {
         <Menu />
         <h2 style={{
           color: "white",
-        }}>Your favorite microblogging platform</h2>
+        }}>Welcome to Our Water Kwitter App
+        </h2>
         <div id="login">
           <LoginForm />
-          <p>Don't have an account?<Link to="/register"> Register here</Link>
+          <p>
+            Don't have an account?<Link to="/register"> Register here</Link>
           </p>
         </div>
       </>
